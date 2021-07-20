@@ -134,8 +134,5 @@ extension QuestionViewController {
         rangedLabels.first?.text = answers.first?.title
         rangedLabels.last?.text = answers.last?.title
     }
-    
-    func getType(for answerChoosen: [Answer]) {
-        var typesCounts = [AnimalType: Int]()
-    }
+
 }

@@ -9,21 +9,22 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-    // 1. Передать сюда массив с ответами
-    // 2. Определить наиболее часто встерчающийся тип живтоного
-    // 3. Отобразить результат в соответсвии с этим животным
-    // 4. Избавиться от кнопки возврата назад на экране результатов
+    
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var infoTypeLabel: UILabel!
     
     
     var resultsChoosen: [Answer]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getType(for: resultsChoosen)
-        
+        let type = getType(for: resultsChoosen)
+        typeLabel.text = "Вы - \(type.rawValue) !"
+        infoTypeLabel.text = type.definition
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
         
-    func getType(for answerChoosen: [Answer]) -> AnimalType {
+    private func getType(for answerChoosen: [Answer]) -> AnimalType {
         var typesCounts = [AnimalType: Int]()
         for answer in resultsChoosen {
             typesCounts[answer.type] = (typesCounts[answer.type] ?? 0) + 1
